@@ -1,11 +1,11 @@
 import matter from 'gray-matter';
 import Link from 'next/link';
 
-const Blog = ({ blogs }) => {
+const Blog = ({ Blogs }) => {
   return (
     <>
       <h1>Blog</h1>
-      {blogs.map(({ frontmatter, slug }) => {
+      {Blogs.map(({ frontmatter, slug }) => {
         return (
           <div key={slug}>
             <h3>{frontmatter.title}</h3>
@@ -40,7 +40,10 @@ export async function getStaticProps() {
     return data;
   })(require.context('../data', true, /\.md$/));
 
+  const orderedBlogs = blogs.sort((a, b) => {
+    return b.frontmatter.id - a.frontmatter.id;
+  });
   return {
-    props: { blogs },
+    props: { Blogs: orderedBlogs },
   };
 }

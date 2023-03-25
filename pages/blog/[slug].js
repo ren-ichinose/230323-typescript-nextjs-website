@@ -1,7 +1,15 @@
 import matter from 'gray-matter';
+import ReactMarkdown from 'react-markdown';
 
 const ShingleBlog = ({ frontmatter, markdownBody }) => {
-  return <h1>記事ページ</h1>;
+  const { title, date } = frontmatter;
+  return (
+    <div>
+      <h1>{title}</h1>
+      <p>{date}</p>
+      <ReactMarkdown>{markdownBody}</ReactMarkdown>
+    </div>
+  );
 };
 
 export default ShingleBlog;

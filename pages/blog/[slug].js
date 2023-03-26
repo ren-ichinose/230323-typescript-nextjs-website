@@ -1,14 +1,28 @@
+import Image from 'next/image';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
 const ShingleBlog = ({ frontmatter, markdownBody }) => {
   const { title, date } = frontmatter;
   return (
-    <div>
-      <h1>{title}</h1>
-      <p>{date}</p>
-      <ReactMarkdown>{markdownBody}</ReactMarkdown>
-    </div>
+    <>
+      <div>
+        <Image
+          src={frontmatter.image}
+          alt="blog-image"
+          height={500}
+          width={1000}
+          priority
+        />
+      </div>
+      <div>
+        <div>
+          <h1>{title}</h1>
+          <p>{date}</p>
+          <ReactMarkdown>{markdownBody}</ReactMarkdown>
+        </div>
+      </div>
+    </>
   );
 };
 

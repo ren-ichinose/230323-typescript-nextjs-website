@@ -34,7 +34,22 @@ export async function getSingleBlog(context) {
   const blogData = await import(`../data/${slug}.md`);
   const singleDocument = matter(blogData.default);
 
+  const { orderedBlogs } = await getAllBlogs();
+  const prev = orderedBlogs.filter((_, index, array) => {
+    return (
+      index !== 0 && singleDocument.data.id === array[index - 1].frontmatter.id
+    );
+  });
+  const next = orderedBlogs.filter((_, index, array) => {
+    return (
+      index !== array.length - 1 &&
+      singleDocument.data.id === array[index + 1].frontmatter.id
+    );
+  });
+
   return {
     singleDocument,
+    prev: prev[0] || null,
+    next: next[0] || null,
   };
 }

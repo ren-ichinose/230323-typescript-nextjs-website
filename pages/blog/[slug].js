@@ -2,8 +2,9 @@ import Image from 'next/image';
 import Layout from '../../components/Layout';
 import ReactMarkdown from 'react-markdown';
 import { getAllBlogs, getSingleBlog } from '../../utils/mdQueries';
+import PrevNext from '../../components/prevNext';
 
-const ShingleBlog = ({ frontmatter, markdownBody }) => {
+const ShingleBlog = ({ frontmatter, markdownBody, prev, next }) => {
   const { title, date } = frontmatter;
   return (
     <Layout>
@@ -22,6 +23,7 @@ const ShingleBlog = ({ frontmatter, markdownBody }) => {
           <p>{date}</p>
           <ReactMarkdown>{markdownBody}</ReactMarkdown>
         </div>
+        <PrevNext prev={prev} next={next} />
       </div>
     </Layout>
   );
@@ -39,12 +41,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const { singleDocument } = await getSingleBlog(context);
+  const { singleDocument, prev, next } = await getSingleBlog(context);
   const { data, content } = singleDocument;
   return {
     props: {
       frontmatter: data,
       markdownBody: content,
+      prev,
+      next,
     },
   };
 }

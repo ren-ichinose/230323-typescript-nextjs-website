@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import Layout from '../../components/Layout'
-import matter from 'gray-matter';
+import Layout from '../../components/Layout';
 import ReactMarkdown from 'react-markdown';
+import { getAllBlogs, getSingleBlog } from '../../utils/mdQueries';
 
 const ShingleBlog = ({ frontmatter, markdownBody }) => {
   const { title, date } = frontmatter;
@@ -30,18 +30,8 @@ const ShingleBlog = ({ frontmatter, markdownBody }) => {
 export default ShingleBlog;
 
 export async function getStaticPaths() {
-  const paths = ((context) => {
-    const keys = context.keys();
-
-    const generateBlogPaths = keys.map((key) => {
-      const slug = key.replace(/^.*[\\\/]/, '').slice(0, -3);
-      const path = `/blog/${slug}`;
-      return path;
-    });
-
-    return generateBlogPaths;
-  })(require.context('../../data', true, /\.md$/));
-
+  const { orderedBlogs } = await getAllBlogs();
+  const paths = orderedBlogs.map(({ slug }) => `/blog/${slug}`);
   return {
     paths,
     fallback: false,
@@ -49,9 +39,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const { slug } = context.params;
-  const blogData = await import(`../../data/${slug}.md`);
-  const { data, content } = matter(blogData.default);
+  const { singleDocument } = await getSingleBlog(context);
+  const { data, content } = singleDocument;
   return {
     props: {
       frontmatter: data,

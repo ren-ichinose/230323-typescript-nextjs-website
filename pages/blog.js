@@ -1,10 +1,11 @@
+import Layout from '../components/Layout';
 import matter from 'gray-matter';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Blog = ({ Blogs }) => {
   return (
-    <>
+    <Layout >
       <div>
         <div>
           <h1>Blog</h1>
@@ -33,7 +34,7 @@ const Blog = ({ Blogs }) => {
           })}
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

@@ -1,11 +1,12 @@
 import Image from 'next/image';
+import Layout from '../../components/Layout'
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
 const ShingleBlog = ({ frontmatter, markdownBody }) => {
   const { title, date } = frontmatter;
   return (
-    <>
+    <Layout>
       <div>
         <Image
           src={frontmatter.image}
@@ -22,7 +23,7 @@ const ShingleBlog = ({ frontmatter, markdownBody }) => {
           <ReactMarkdown>{markdownBody}</ReactMarkdown>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

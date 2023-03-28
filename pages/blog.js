@@ -1,16 +1,17 @@
 import Layout from '../components/Layout';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllBlogs } from '../utils/mdQueries';
+import { blogsPerPage, getAllBlogs } from '../utils/mdQueries';
+import Pagination from '../components/pagination';
 
-const Blog = ({ Blogs }) => {
+const Blog = ({ blogs, numberPages }) => {
   return (
-    <Layout >
+    <Layout>
       <div>
         <div>
           <h1>Blog</h1>
           <p>エンジニアの日常生活をお届けします</p>
-          {Blogs.map(({ frontmatter, slug }) => {
+          {blogs.map(({ frontmatter, slug }) => {
             return (
               <div key={slug} style={{ display: 'flex' }}>
                 <div>
@@ -33,6 +34,7 @@ const Blog = ({ Blogs }) => {
             );
           })}
         </div>
+        <Pagination numberPages={numberPages} />
       </div>
     </Layout>
   );
@@ -41,9 +43,10 @@ const Blog = ({ Blogs }) => {
 export default Blog;
 
 export async function getStaticProps() {
-  const { orderedBlogs } = await getAllBlogs();
-  
+  const { orderedBlogs, numberPages } = await getAllBlogs();
+  const limitedBlogs = orderedBlogs.slice(0, blogsPerPage);
+
   return {
-    props: { Blogs: orderedBlogs },
+    props: { blogs: limitedBlogs, numberPages },
   };
 }

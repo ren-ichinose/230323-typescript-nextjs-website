@@ -1,7 +1,12 @@
+import { FC } from 'react';
 import Footer from './footer';
 import Header from './header';
 
-const Layout = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+const Layout: FC<Props> = ({ children }) => {
   return (
     <>
       <Header />

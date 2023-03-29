@@ -1,7 +1,13 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { FC } from 'react';
 
-const Seo = ({ title, description }) => {
+interface Props {
+  title: string;
+  description: string;
+}
+
+const Seo: FC<Props> = ({ title, description }) => {
   const router = useRouter();
   const baseUrl = 'http://localhost:3000';
   const currentUrl = baseUrl + router.pathname;
@@ -10,7 +16,7 @@ const Seo = ({ title, description }) => {
     <Head>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta charSet="utf-8" />
-      
+
       <title>{title}</title>
       <meta name="description" content={description} key="description" />
       <meta name="image" content={defaultImage} key="image" />

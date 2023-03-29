@@ -1,6 +1,11 @@
-import Link from "next/link";
+import Link from 'next/link';
+import { FC } from 'react';
 
-const Pagination = ({ numberPages }) => {
+interface Props {
+  numberPages: number;
+}
+
+const Pagination: FC<Props> = ({ numberPages }) => {
   return (
     <h2>
       {Array.from({ length: numberPages }, (_, i) => (
@@ -12,4 +17,4 @@ const Pagination = ({ numberPages }) => {
   );
 };
 
-export default Pagination
+export default Pagination;

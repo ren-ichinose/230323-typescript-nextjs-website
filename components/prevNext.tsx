@@ -1,6 +1,13 @@
 import Link from 'next/link';
+import { FC } from 'react';
+import { Blog } from '../interfaces/interface';
 
-const PrevNext = ({ prev, next }) => {
+interface Props {
+  prev: Blog | null;
+  next: Blog | null;
+}
+
+const PrevNext: FC<Props> = ({ prev, next }) => {
   return (
     <div style={{ display: 'flex' }}>
       {prev && (

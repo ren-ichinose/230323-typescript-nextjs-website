@@ -3,10 +3,12 @@ import Image from 'next/image';
 import Layout from '../../../components/Layout';
 import { getAllBlogs, blogsPerPage } from '../../../utils/mdQueries';
 import Pagination from '../../../components/pagination';
+import Seo from '../../../components/seo'
 
 const PaginationPage = ({ blogs, numberPages }) => {
   return (
     <Layout>
+      <Seo title="ブログ" description="これはブログページです" />
       <div>
         <div>
           <h1>Blog</h1>

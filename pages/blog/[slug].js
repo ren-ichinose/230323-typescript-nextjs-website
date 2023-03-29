@@ -3,11 +3,13 @@ import Layout from '../../components/Layout';
 import ReactMarkdown from 'react-markdown';
 import { getAllBlogs, getSingleBlog } from '../../utils/mdQueries';
 import PrevNext from '../../components/prevNext';
+import Seo from '../../components/seo';
 
 const ShingleBlog = ({ frontmatter, markdownBody, prev, next }) => {
-  const { title, date } = frontmatter;
+  const { title, date, excerpt } = frontmatter;
   return (
     <Layout>
+      <Seo title={title} description={excerpt} />
       <div>
         <Image
           src={frontmatter.image}

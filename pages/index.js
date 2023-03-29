@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import Layout from '../components/Layout';
+import Seo from '../components/seo';
 // import Image from 'next/image';
 
 export default function Home() {
   return (
     <Layout>
+      <Seo
+        title="Abe Hiroki"
+        description="Abe Hirokiのポートフォリオサイトです"
+      />
       <div>
         {/* <Image
           src="/images/index-hero.jpg"
@@ -53,7 +58,7 @@ export default function Home() {
           </div>
         </div>
         <div style={{ display: 'flex' }}>
-          <div style={{ width: '25%', padding: '50PX'}}>
+          <div style={{ width: '25%', padding: '50PX' }}>
             <img
               src="/images/javascript.svg"
               alt="javascript"
@@ -61,7 +66,7 @@ export default function Home() {
             />
             <span>JavaScript / 10 years</span>
           </div>
-          <div style={{ width: '25%', padding: '50PX'}}>
+          <div style={{ width: '25%', padding: '50PX' }}>
             <img
               src="/images/react.svg"
               alt="react"
@@ -69,7 +74,7 @@ export default function Home() {
             />
             <span>React / 5 years</span>
           </div>
-          <div style={{ width: '25%', padding: '50PX'}}>
+          <div style={{ width: '25%', padding: '50PX' }}>
             <img
               src="/images/gatsby.svg"
               alt="gatsby"
@@ -77,7 +82,7 @@ export default function Home() {
             />
             <span>Gatsby / 3 years</span>
           </div>
-          <div style={{ width: '25%', padding: '50PX'}}>
+          <div style={{ width: '25%', padding: '50PX' }}>
             <img src="/images/next.svg" alt="next" style={{ width: '100%' }} />
             <span>Next.JS / 3 years</span>
           </div>

@@ -1,7 +1,8 @@
+import { NextPage } from 'next';
 import Layout from '../components/Layout';
 import Seo from '../components/seo';
 
-const NotFoundPage = () => {
+const NotFoundPage: NextPage = () => {
   return (
     <Layout>
       <Seo title="ページが見つかりません" description="これは404ページです" />

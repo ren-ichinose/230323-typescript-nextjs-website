@@ -4,8 +4,15 @@ import Image from 'next/image';
 import { blogsPerPage, getAllBlogs } from '../utils/mdQueries';
 import Pagination from '../components/pagination';
 import Seo from '../components/seo';
+import { NextPage } from 'next';
+import { Blog } from '../interfaces/interface';
 
-const Blog = ({ blogs, numberPages }) => {
+interface Props {
+  blogs: Blog[];
+  numberPages: number;
+}
+
+const Blog: NextPage<Props> = ({ blogs, numberPages }) => {
   return (
     <Layout>
       <Seo title="ブログ" description="これはブログページです" />

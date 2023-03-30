@@ -1,7 +1,8 @@
+import { NextPage } from 'next';
 import Layout from '../components/Layout'
 import Seo from '../components/seo';
 
-const Contact = () => {
+const Contact: NextPage = () => {
   return (
     <Layout>
       <Seo title="問い合わせ" description="これは問い合わせページです" />
@@ -22,7 +23,7 @@ const Contact = () => {
               <label htmlFor="textarea">ご用件</label>
               <textarea
                 name="message"
-                rows="10"
+                rows={10}
                 id="textarea"
                 required
               ></textarea>

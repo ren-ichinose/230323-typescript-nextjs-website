@@ -11,6 +11,7 @@ __metadata:
   dependencies:
     "@types/node": ^18.15.11
     "@types/react": ^18.0.31
+    "@types/webpack-env": ^1.18.0
     eslint: 8.36.0
     eslint-config-next: 13.2.4
     gray-matter: ^4.0.3
@@ -347,6 +348,13 @@ __metadata:
   version: 2.0.6
   resolution: "@types/unist@npm:2.0.6"
   checksum: 25cb860ff10dde48b54622d58b23e66214211a61c84c0f15f88d38b61aa1b53d4d46e42b557924a93178c501c166aa37e28d7f6d994aba13d24685326272d5db
+  languageName: node
+  linkType: hard
+
+"@types/webpack-env@npm:^1.18.0":
+  version: 1.18.0
+  resolution: "@types/webpack-env@npm:1.18.0"
+  checksum: ecf4daa31cb37d474ac0ce058d83a3cadeb9881ca8107ae93c2299eaa9954943aae09b43e143c62ccbe4288a14db00c918c9debd707afe17c3998f873eaabc59
   languageName: node
   linkType: hard
 

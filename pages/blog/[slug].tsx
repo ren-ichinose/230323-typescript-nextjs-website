@@ -10,8 +10,13 @@ import { Blog } from '../../interfaces/interface';
 interface Props {
   frontmatter: Blog['frontmatter'];
   markdownBody: string;
-  prev: Blog;
-  next: Blog;
+  prev: Blog | null;
+  next: Blog | null;
+}
+
+interface getStaticPaths {
+  paths: string[];
+  fallback: boolean;
 }
 
 const ShingleBlog: NextPage<Props> = ({
@@ -47,7 +52,7 @@ const ShingleBlog: NextPage<Props> = ({
 
 export default ShingleBlog;
 
-export async function getStaticPaths() {
+export async function getStaticPaths(): Promise<getStaticPaths> {
   const { orderedBlogs }: { orderedBlogs: Blog[] } = await getAllBlogs();
   const paths = orderedBlogs.map(({ slug }: Blog) => `/blog/${slug}`);
   return {
@@ -58,12 +63,12 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(
   context: GetStaticPropsContext<{ slug: string }>
-): Promise<any> {
+): Promise<{ props: Props }> {
   const { singleDocument, prev, next } = await getSingleBlog(context);
-  const { data, content }: any = singleDocument;
+  const { data, content } = singleDocument;
   return {
     props: {
-      frontmatter: data,
+      frontmatter: data as Blog['frontmatter'],
       markdownBody: content,
       prev,
       next,

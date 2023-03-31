@@ -12,6 +12,7 @@ interface Props {
   numberPages: number;
 }
 
+
 const Blog: NextPage<Props> = ({ blogs, numberPages }) => {
   return (
     <Layout>
@@ -51,7 +52,7 @@ const Blog: NextPage<Props> = ({ blogs, numberPages }) => {
 
 export default Blog;
 
-export async function getStaticProps() {
+export async function getStaticProps(): Promise<{ props: Props }> {
   const { orderedBlogs, numberPages } = await getAllBlogs();
   const limitedBlogs = orderedBlogs.slice(0, blogsPerPage);
 

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const Pagination = ({ numberPages }) => {
   return (
@@ -12,4 +12,4 @@ const Pagination = ({ numberPages }) => {
   );
 };
 
-export default Pagination
+export default Pagination;

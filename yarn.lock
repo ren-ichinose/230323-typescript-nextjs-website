@@ -11,10 +11,12 @@ __metadata:
   dependencies:
     "@types/node": ^18.15.11
     "@types/react": ^18.0.31
+    "@types/webpack-env": ^1.18.0
     eslint: 8.36.0
     eslint-config-next: 13.2.4
     gray-matter: ^4.0.3
     next: 13.2.4
+    prettier-plugin-sort-imports: ^1.7.1
     raw-loader: ^4.0.2
     react: 18.2.0
     react-dom: 18.2.0
@@ -347,6 +349,13 @@ __metadata:
   version: 2.0.6
   resolution: "@types/unist@npm:2.0.6"
   checksum: 25cb860ff10dde48b54622d58b23e66214211a61c84c0f15f88d38b61aa1b53d4d46e42b557924a93178c501c166aa37e28d7f6d994aba13d24685326272d5db
+  languageName: node
+  linkType: hard
+
+"@types/webpack-env@npm:^1.18.0":
+  version: 1.18.0
+  resolution: "@types/webpack-env@npm:1.18.0"
+  checksum: ecf4daa31cb37d474ac0ce058d83a3cadeb9881ca8107ae93c2299eaa9954943aae09b43e143c62ccbe4288a14db00c918c9debd707afe17c3998f873eaabc59
   languageName: node
   linkType: hard
 
@@ -2744,6 +2753,26 @@ __metadata:
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
   checksum: cd192ec0d0a8e4c6da3bb80e4f62afe336df3f76271ac6deb0e6a36187133b6073a19e9727a1ff108cd8b9982e4768850d413baa71214dd80c7979617dca827a
+  languageName: node
+  linkType: hard
+
+"prettier-plugin-sort-imports@npm:^1.7.1":
+  version: 1.7.1
+  resolution: "prettier-plugin-sort-imports@npm:1.7.1"
+  dependencies:
+    prettier: ^2.5.1
+  peerDependencies:
+    typescript: ^4.0.3
+  checksum: ea47a2b16469cdfd32ed85514b8bb7d5ad9eada83f23ad5a42f0c740bf1d8e126a0a8ede0ac3a8a97f9c0af304007f4e9c7be3a839c7d39996b3c675bf2aa8cf
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.5.1":
+  version: 2.8.7
+  resolution: "prettier@npm:2.8.7"
+  bin:
+    prettier: bin-prettier.js
+  checksum: fdc8f2616f099f5f0d685907f4449a70595a0fc1d081a88919604375989e0d5e9168d6121d8cc6861f21990b31665828e00472544d785d5940ea08a17660c3a6
   languageName: node
   linkType: hard
 

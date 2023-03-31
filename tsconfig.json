@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "utils/mdQueries.js"  ],
+, "utils/mdQueries.ts"  ],
   "exclude": [
     "node_modules"
   ]

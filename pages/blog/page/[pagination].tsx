@@ -1,11 +1,18 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import Layout from '../../../components/Layout';
 import { getAllBlogs, blogsPerPage } from '../../../utils/mdQueries';
 import Pagination from '../../../components/pagination';
-import Seo from '../../../components/seo'
+import { GetStaticPropsContext, NextPage } from 'next';
+import { Blog } from '../../../interfaces/interface';
+import Layout from '../../../components/Layout';
+import Seo from '../../../components/seo';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const PaginationPage = ({ blogs, numberPages }) => {
+interface Props {
+  blogs: Blog[];
+  numberPages: number;
+}
+
+const PaginationPage: NextPage<Props> = ({ blogs, numberPages }) => {
   return (
     <Layout>
       <Seo title="ブログ" description="これはブログページです" />
@@ -44,7 +51,10 @@ const PaginationPage = ({ blogs, numberPages }) => {
 
 export default PaginationPage;
 
-export async function getStaticPaths() {
+export async function getStaticPaths(): Promise<{
+  paths: string[];
+  fallback: boolean;
+}> {
   const { numberPages } = await getAllBlogs();
 
   const paths =
@@ -58,9 +68,11 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps(
+  context: GetStaticPropsContext<{ pagination: string }>
+): Promise<{ props: Props }> {
   const { orderedBlogs, numberPages } = await getAllBlogs();
-  const currentPage = context.params.pagination;
+  const currentPage = parseInt(context.params!.pagination);
   const limitedBlogs = orderedBlogs.slice(
     (currentPage - 1) * blogsPerPage,
     currentPage * blogsPerPage

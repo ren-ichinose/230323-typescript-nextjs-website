@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import Layout from '../components/Layout';
 import Seo from '../components/seo';
+import Link from 'next/link';
 // import Image from 'next/image';
 
 export default function Home() {

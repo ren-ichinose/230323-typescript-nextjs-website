@@ -1,8 +1,21 @@
 import matter from 'gray-matter';
+import { GetStaticPropsContext } from 'next';
+import { Blog } from '../interfaces/interface';
 
 export const blogsPerPage = 5;
 
-export async function getAllBlogs() {
+interface getAllBlogsResult {
+  orderedBlogs: Blog[];
+  numberPages: number;
+}
+
+interface SingleBlog {
+  singleDocument: matter.GrayMatterFile<string>;
+  prev: Blog | null;
+  next: Blog | null;
+}
+
+export async function getAllBlogs(): Promise<getAllBlogsResult> {
   const blogs = ((context) => {
     const keys = context.keys();
     const data = keys.map((key) => {
@@ -10,7 +23,7 @@ export async function getAllBlogs() {
       const value = context(key);
       const { data } = matter(value.default);
       return {
-        frontmatter: data,
+        frontmatter: data as Blog['frontmatter'],
         slug,
       };
     });
@@ -29,12 +42,17 @@ export async function getAllBlogs() {
   };
 }
 
-export async function getSingleBlog(context) {
-  const { slug } = context.params;
+export async function getSingleBlog(
+  context: GetStaticPropsContext<{ slug: string }>
+): Promise<SingleBlog> {
+  // 下記のコードはTypeScriptの場合、undefindになる可能性がある為、エラーが発生する。
+  // const { slug } = context.params;
+
+  const slug = context.params?.slug;
   const blogData = await import(`../data/${slug}.md`);
   const singleDocument = matter(blogData.default);
-
   const { orderedBlogs } = await getAllBlogs();
+
   const prev = orderedBlogs.filter((_, index, array) => {
     return (
       index !== 0 && singleDocument.data.id === array[index - 1].frontmatter.id

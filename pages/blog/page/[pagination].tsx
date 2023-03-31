@@ -1,11 +1,11 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import Layout from '../../../components/Layout';
 import { getAllBlogs, blogsPerPage } from '../../../utils/mdQueries';
 import Pagination from '../../../components/pagination';
-import Seo from '../../../components/seo';
-import { Blog } from '../../../interfaces/interface';
 import { GetStaticPropsContext, NextPage } from 'next';
+import { Blog } from '../../../interfaces/interface';
+import Layout from '../../../components/Layout';
+import Seo from '../../../components/seo';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface Props {
   blogs: Blog[];

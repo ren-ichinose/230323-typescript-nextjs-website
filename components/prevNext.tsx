@@ -1,6 +1,6 @@
+import { Blog } from '../interfaces/interface';
 import Link from 'next/link';
 import { FC } from 'react';
-import { Blog } from '../interfaces/interface';
 
 interface Props {
   prev: Blog | null;

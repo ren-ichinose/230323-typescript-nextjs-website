@@ -1,11 +1,11 @@
-import Image from 'next/image';
-import Layout from '../../components/Layout';
-import ReactMarkdown from 'react-markdown';
 import { getAllBlogs, getSingleBlog } from '../../utils/mdQueries';
-import PrevNext from '../../components/prevNext';
-import Seo from '../../components/seo';
 import { GetStaticPropsContext, NextPage } from 'next';
 import { Blog } from '../../interfaces/interface';
+import PrevNext from '../../components/prevNext';
+import Layout from '../../components/Layout';
+import ReactMarkdown from 'react-markdown';
+import Seo from '../../components/seo';
+import Image from 'next/image';
 
 interface Props {
   frontmatter: Blog['frontmatter'];

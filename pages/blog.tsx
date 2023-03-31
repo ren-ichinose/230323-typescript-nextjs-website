@@ -1,17 +1,16 @@
-import Layout from '../components/Layout';
-import Link from 'next/link';
-import Image from 'next/image';
 import { blogsPerPage, getAllBlogs } from '../utils/mdQueries';
 import Pagination from '../components/pagination';
+import { Blog } from '../interfaces/interface';
+import Layout from '../components/Layout';
 import Seo from '../components/seo';
 import { NextPage } from 'next';
-import { Blog } from '../interfaces/interface';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface Props {
   blogs: Blog[];
   numberPages: number;
 }
-
 
 const Blog: NextPage<Props> = ({ blogs, numberPages }) => {
   return (

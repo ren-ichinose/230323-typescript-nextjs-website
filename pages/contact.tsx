@@ -1,6 +1,6 @@
-import { NextPage } from 'next';
-import Layout from '../components/Layout'
+import Layout from '../components/Layout';
 import Seo from '../components/seo';
+import { NextPage } from 'next';
 
 const Contact: NextPage = () => {
   return (
